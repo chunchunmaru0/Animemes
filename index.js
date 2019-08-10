@@ -28,22 +28,27 @@ client.on('message', message => {
         .then(function(jsonObj) {
            var data = jsonObj.data;
            var children = data.children;
-           var imgUrl;
+           var imgUrl = new Array;
+
            for (var i = 0; i < children.length; i++) {
              var childData = children[i].data;
              var imgPreview = childData.preview;
              var imgArray = imgPreview.images;
              var source = imgArray[0].source;
-             imgUrl = source.url;
+             imgUrl[i] = source.url;
 
 
-             console.log(imgUrl)
+             
 
            };
            var rng = Math.floor(Math.random() * children.length) + 3;
            var imgFile = imgUrl[rng];
+          
+           console.log(file);
            console.log(rng);
            console.log(imgFile);
+
+          
             console.log(children.length)
             
           });
