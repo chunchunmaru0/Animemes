@@ -8,12 +8,29 @@ const fs = require("fs");
 
 client.once('ready', () => {
   console.log('Ready!');
-  bot.user.setActivity("$help", {type: "PLAYING"});
+  client.user.setActivity("$help", {type: "PLAYING"});
   
 });
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
+fs.readdir("./commands/", (err, files) =>{
+
+  if(err) console.log(err);
+
+  let jsfile = files.filter(f => f.split(".").pop() === "js");
+  if(jsfile.length <= 0) {
+    console.log("[Logs] Couldn't Find Commands");
+  }
+
+  jsfile.forEach((f, i) => {
+    let pull = require(`./commands/${f}`);
+    client.commands.set(pull.config.name, pull);
+    pull.config.aliases.forEach(alias => {
+      client.aliases.set(alias, pull.config.name)
+    })
+  })  
+})
 
 
 
@@ -25,11 +42,8 @@ client.on('message', async message => {
   let args = messageArray.slice(1);
 
 
-  if (cmd === `${prefix}help`){
-    
-     message.channel.send('This is Help!')
-
-  }
+ let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+ if(commandfile) commandfile.run(client,message,args)
 
   if (cmd === `${prefix}meme`){
     
@@ -82,7 +96,7 @@ client.on('message', async message => {
       var cityname = enteredContent.replace('$temp', '')
       console.log(cityname);
 
-      fetch("https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&appid=Your_Key")
+      fetch("https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&appid=YOUR_KEY")
         .then(function(response){
           return response.json();
         })
