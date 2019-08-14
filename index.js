@@ -8,21 +8,27 @@ var meme ="";
 
 client.once('ready', () => {
   console.log('Ready!');
+  bot.user.setActivity("$help", {type: "PLAYING"});
   
 });
 
 
 
-client.on('message', message => {
+client.on('message', async message => {
 
 
-  if (message.content.startsWith(`${prefix}help`)){
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+
+  if (cmd === `${prefix}help`){
     
      message.channel.send('This is Help!')
 
   }
 
-  if (message.content.startsWith(`${prefix}meme`)){
+  if (cmd === `${prefix}meme`){
     
 
     var rng = Math.floor(Math.random() * 3) + 0;
@@ -54,7 +60,7 @@ client.on('message', message => {
         var imgFile = imgUrl[rng];
         console.log(imgFile);
 
-        console[imgFile];
+        console.log("")
         message.channel.send("",{  
         
           file: imgFile
@@ -68,7 +74,7 @@ client.on('message', message => {
    
     }
 
-    if (message.content.startsWith(`${prefix}temp`)){
+    if (cmd ===`${prefix}temp`){
       var enteredContent = message.content
       var cityname = enteredContent.replace('$temp', '')
       console.log(cityname);
