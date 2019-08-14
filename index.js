@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 const fetch = require("node-fetch");
-var meme ="";
+const fs = require("fs");
 
 
 
@@ -11,6 +11,9 @@ client.once('ready', () => {
   bot.user.setActivity("$help", {type: "PLAYING"});
   
 });
+
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 
 
 
@@ -79,7 +82,7 @@ client.on('message', async message => {
       var cityname = enteredContent.replace('$temp', '')
       console.log(cityname);
 
-      fetch("https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&appid=YOUR_KEY")
+      fetch("https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&appid=Your_Key")
         .then(function(response){
           return response.json();
         })
