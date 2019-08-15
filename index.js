@@ -15,23 +15,7 @@ client.once('ready', () => {
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-// fs.readdir("./commands/", (err, files) =>{
 
-//   if(err) console.log(err);
-
-//   let jsfile = files.filter(f => f.split(".").pop() === "js");
-//   if(jsfile.length <= 0) {
-//     console.log("[Logs] Couldn't Find Commands");
-//   }
-
-//   jsfile.forEach((f, i) => {
-//     let pull = require(`./commands/${f}`);
-//     client.commands.set(pull.config.name, pull);
-//     pull.config.aliases.forEach(alias => {
-//       client.aliases.set(alias, pull.config.name)
-//     })
-//   })  
-// })
 
 const load = dirs => {
   const commands = fs.readdirSync(`./commands/${dirs}/`).filter(d => d.endsWith('.js'));
@@ -41,7 +25,7 @@ const load = dirs => {
       if (pull.config.aliases) pull.config.aliases.forEach(a => client.aliases.set(a, pull.config.name));
     };
   };
-  ["general"].forEach(x => load(x));
+  ["general", "info"].forEach(x => load(x));
 
 
 
