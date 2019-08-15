@@ -46,7 +46,19 @@ fetch(url[rng])
     
       file: imgFile
   
-    });
+    }).then(async msg =>{
+      try{
+      await msg.react('581795233067433985');
+      await msg.react('595108561831460875');
+      await msg.react('598068228220256266')
+    } catch (error){
+
+      console.error("failed to add emoji")
+    }
+    })
+    
+    
+
     msg.delete(2000);
 
   });
