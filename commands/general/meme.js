@@ -1,11 +1,19 @@
+const fetch = require("node-fetch")
+const { prefix } = require('../../config.json');
 
-const Discord = require("discord.js")
-const { prefix, token } = require('../config.json');
-const fetch = require("node-fetch");
+module.exports = {
+    config: {
+        name: "meme",
+        aliases: ["m", "memes"],
+        usage: "meme",
+        category: "general",
+        description: "displays the random animemes",
+        accessableby: "members"
+	},
+	run: async (client, message, args) => {
+    let msg = await message.channel.send("Generating...")
 
-
-module.exports.run = async (client, message, args) => {
-var rng = Math.floor(Math.random() * 3) + 0;
+		var rng = Math.floor(Math.random() * 3) + 0;
 var url = new Array;
 console.log("url rng is: " + rng)
 url = ["https://www.reddit.com/r/Animemes/top/.json", "https://www.reddit.com/r/Animemes/.json", "https://reddit.com/r/Animemes/top/.json?t=week", "https://reddit.com/r/Animemes/top/.json?t=month"]
@@ -28,6 +36,9 @@ fetch(url[rng])
     console.log("children number = " + children.length)
     console.log("Meme rng is" + rng)
     var imgFile = imgUrl[rng];
+    // if(imgFile.startsWith("https://v.")){
+    //   imgFile = imgUrl[rng]
+    // }
     console.log(imgFile);
 
     console.log("")
@@ -36,11 +47,9 @@ fetch(url[rng])
       file: imgFile
   
     });
+    msg.delete(2000);
 
   });
-}
 
-module.exports.config = {
-    name: "meme",
-    aliases: ["m", "memes"]
+	}
 }

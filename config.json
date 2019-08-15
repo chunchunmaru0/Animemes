@@ -1,5 +1,6 @@
 {
 	"prefix": "$",
-	"token": "BOT_TOKEN"
+	"token": "BOT_TOKEN",
+	"tempAPI": "YOUR_API_KEY"
 
 }
