@@ -5,29 +5,6 @@ const fs = require("fs");
 const { stripIndents } = require("common-tags")
 
 
-// module.exports.run = async (client, message, args) => {
-//     const hEmbed = new Discord.RichEmbed()
-// 	.setColor('#0099ff')
-// 	.setTitle('Help')
-// 	.setDescription('Shows the HELP for this bot')
-// 	.setThumbnail(message.client.avatarURL)
-// 	.addField('Commands', 'being written')
-// 	.addBlankField()
-// 	// .addField('Inline field title', 'Some value here', true)
-// 	// .addField('Inline field title', 'Some value here', true)
-// 	// .addField('Inline field title', 'Some value here', true)
-// 	// .setImage('')
-// 	.setTimestamp()
-// 	.setFooter(message.guild.name, '');
-
-// message.channel.send(hEmbed);
-// }
-
-// module.exports.config = {
-//     name: "help",
-//     aliases: ["h", "halp"]
-// }
-
 module.exports = {
     config: {
         name: "help",

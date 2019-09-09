@@ -32,6 +32,8 @@ const load = dirs => {
 
 client.on('message', async message => {
 
+  if(!message.content.startsWith(prefix)) return
+
 
   let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let cmd = args.shift().toLowerCase();

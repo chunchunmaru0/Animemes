@@ -11,7 +11,10 @@ module.exports = {
         accessableby: "members"
 	},
 	run: async (client, message, args) => {
-	  var enteredContent = message.content
+    if(!args[0]){
+      message.channel.send("Please Enter a Valid City Name");
+    } else {
+	  
       var cityname = args;
       console.log(cityname);
 
@@ -26,6 +29,7 @@ module.exports = {
           
           message.channel.send("The weather in "+cityname+" is: "+ tempDegC)
         })
+      }
 
 	}
 }

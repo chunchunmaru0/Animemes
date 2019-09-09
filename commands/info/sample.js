@@ -3,7 +3,7 @@ module.exports = {
         name: "sample",
         aliases: ["s"],
         usage: "",
-        category: "",
+        category: "info",
         description: "",
         accessableby: ""
 	},
