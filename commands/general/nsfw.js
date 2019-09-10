@@ -15,6 +15,8 @@ module.exports = {
 
         const booru = new Danbooru()
         
+        if (message.channel.nsfw){
+            // console.log("it's nsfw channel")
 
         booru.posts({ tags: 'rating:questionable order:rank', limit: 100  }).then(posts => {
             // Select a random post from posts array
@@ -37,5 +39,8 @@ module.exports = {
             //     console.log(response.pipe(require('fs').createWriteStream(name)));
             //   })
         })
+    } else {
+        message.channel.send("This is not NSFW channel, Please command me on NSFW channel :)")
+    }
     }
 }
