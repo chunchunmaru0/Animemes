@@ -40,7 +40,7 @@ module.exports = {
                             .setTitle("here's the SAUCE: ")
                             .setThumbnail(thumbnail)
                             .addBlankField()
-                            .addField("**Similarity:**", similarity, "**%**")
+                            .addField("**Similarity:**", similarity)
                             .addField("source:", source)
                             .addField("year:", year)
                             .addField("index-name:", index_name)
