@@ -40,7 +40,7 @@ module.exports = {
             //   })
         })
     } else {
-        message.channel.send("This is not NSFW channel, Please command me on NSFW channel :)")
+        message.channel.send("This is not NSFW channel, Please command me on NSFW channel <:astolfo_peace:598071428419682314>")
     }
     }
 }
