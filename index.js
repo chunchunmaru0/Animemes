@@ -25,7 +25,7 @@ const load = dirs => {
       if (pull.config.aliases) pull.config.aliases.forEach(a => client.aliases.set(a, pull.config.name));
     };
   };
-  ["general", "info"].forEach(x => load(x));
+  ["general", "fun", "info"].forEach(x => load(x));
 
 
 
