@@ -4,21 +4,22 @@ const neko = new nekoClient();
 module.exports = {
     config: {
         name: "neko",
-        aliases: ["n"],
+        aliases: ["neko", "meow", "nya"],
         usage: "",
-        category: "info",
-        description: "",
+        category: "fun",
+        description: "Sends SFW Neko",
         accessableby: ""
-	},
-	run: async (client, message, args) => {
-        async function test() {
-            var data = await neko.data.neko();
-            console.log(data.message)
+    },
+    run: async (client, message, args) => {
+         async function test() {
+            //console.log( await neko.data.neko());
+            var data = await neko.data.neko()
+           // console.log(data.message)
             message.channel.send("",{
-                file: data.message
+                file : data.message
             })
-          }
-          
-          test();
-	}
+        }
+
+        test();
+    }
 }
